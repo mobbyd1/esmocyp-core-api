@@ -1,4 +1,4 @@
-package esmocyp.core.api.dlo;
+package esmocyp.core.api.service;
 
 import esmocyp.core.api.dao.UserRepository;
 import esmocyp.core.api.model.User;

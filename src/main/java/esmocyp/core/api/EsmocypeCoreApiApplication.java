@@ -2,7 +2,7 @@ package esmocyp.core.api;
 
 import esmocyp.core.api.auth.CustomUserDetails;
 import esmocyp.core.api.dao.UserRepository;
-import esmocyp.core.api.dlo.UserService;
+import esmocyp.core.api.service.UserService;
 import esmocyp.core.api.model.Role;
 import esmocyp.core.api.model.User;
 import org.springframework.beans.factory.annotation.Autowired;

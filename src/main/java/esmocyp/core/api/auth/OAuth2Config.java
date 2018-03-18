@@ -40,7 +40,7 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
                 .authorities("ROLE_CLIENT","ROLE_TRUSTED_CLIENT")
                 .scopes("read","write","trust")
                 .resourceIds("oauth2-resource")
-                .accessTokenValiditySeconds(5000)
+                .accessTokenValiditySeconds(Integer.MAX_VALUE)
                 .secret("secret");
     }
 
