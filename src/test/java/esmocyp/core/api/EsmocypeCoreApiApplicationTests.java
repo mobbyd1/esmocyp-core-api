@@ -20,9 +20,15 @@ public class EsmocypeCoreApiApplicationTests {
 		String aBox = getABox();
 		String tBox = getTBox();
 
-		final Reasoner reasoner = new Reasoner(query, streamingURL, namedModel, aBox, tBox);
-		reasoner.init();
+		final Reasoner reasoner = new Reasoner(
+				query
+				, streamingURL
+				, namedModel
+				, aBox
+				, tBox
+				, null );
 
+		reasoner.init();
 		stream( reasoner );
 	}
 

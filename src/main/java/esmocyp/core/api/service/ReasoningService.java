@@ -3,8 +3,11 @@ package esmocyp.core.api.service;
 import esmocyp.core.api.dto.ReasonerDTO;
 import esmocyp.core.api.dto.StreamDTO;
 import esmocyp.core.api.model.User;
+import esmocyp.core.api.reasoning.Callback;
 import esmocyp.core.api.reasoning.Reasoner;
 import esmocyp.core.api.service.exception.ReasoningServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -13,6 +16,9 @@ import java.util.concurrent.ConcurrentHashMap;
 @Service
 public class ReasoningService {
 
+    @Autowired
+    private ApplicationContext applicationContext;
+    
     private Map<User, Reasoner> reasoners = new ConcurrentHashMap<>();
 
     public void create(User user, ReasonerDTO dto) throws ReasoningServiceException {
@@ -23,7 +29,17 @@ public class ReasoningService {
         String aBox = dto.getABox();
         String tBox = dto.getTbox();
 
-        final Reasoner reasoner = new Reasoner(query, streamingURL, namedModel, aBox, tBox);
+        Callback callback = applicationContext.getBean(Callback.class);
+        callback.setUuids( dto.getUuids() );
+
+        Reasoner reasoner = new Reasoner(
+                query
+                , streamingURL
+                , namedModel
+                , aBox
+                , tBox
+                , callback);
+
         reasoners.put(user, reasoner);
 
         try {

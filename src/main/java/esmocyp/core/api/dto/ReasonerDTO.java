@@ -1,5 +1,7 @@
 package esmocyp.core.api.dto;
 
+import java.util.List;
+
 public class ReasonerDTO {
 
     private String query;
@@ -7,6 +9,8 @@ public class ReasonerDTO {
     private String namedModel;
     private String aBox;
     private String tbox;
+
+    private List<String> uuids;
 
     public String getQuery() {
         return query;
@@ -46,5 +50,13 @@ public class ReasonerDTO {
 
     public void setStreamingURL(String streamingURL) {
         this.streamingURL = streamingURL;
+    }
+
+    public List<String> getUuids() {
+        return uuids;
+    }
+
+    public void setUuids(List<String> uuids) {
+        this.uuids = uuids;
     }
 }

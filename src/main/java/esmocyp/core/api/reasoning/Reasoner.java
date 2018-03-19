@@ -7,6 +7,7 @@ import eu.larkc.csparql.common.utils.ReasonerChainingType;
 import eu.larkc.csparql.core.engine.CsparqlEngine;
 import eu.larkc.csparql.core.engine.CsparqlEngineImpl;
 import eu.larkc.csparql.core.engine.CsparqlQueryResultProxy;
+import jdk.nashorn.internal.codegen.CompilerConstants;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -20,12 +21,15 @@ public class Reasoner extends RdfStream {
     private String aBox;
     private String tBox;
 
+    private Callback callback;
+
     public Reasoner(
             String query,
             String streamingUrl,
             String namedModel,
             String aBox,
-            String tBox ) {
+            String tBox,
+            Callback callback ) {
 
         super(streamingUrl);
 
@@ -33,6 +37,8 @@ public class Reasoner extends RdfStream {
         this.namedModel = namedModel;
         this.aBox = aBox;
         this.tBox = tBox;
+
+        this.callback = callback;
     }
 
     public void init() throws Exception {
@@ -51,7 +57,6 @@ public class Reasoner extends RdfStream {
         engine.registerStream( this );
         CsparqlQueryResultProxy csparqlQueryResultProxy = engine.registerQuery(query, false);
 
-        Callback callback = new Callback();
         csparqlQueryResultProxy.addObserver( callback );
 
         File tBoxFile = File.createTempFile("esmocyp", "tobx");

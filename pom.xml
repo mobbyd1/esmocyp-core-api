@@ -72,6 +72,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>lac</groupId>
+			<artifactId>contextnet</artifactId>
+			<version>2.7</version>
+		</dependency>
+
+		<dependency>
 			<groupId>eu.larkc.csparql</groupId>
 			<artifactId>csparql-core</artifactId>
 			<version>0.9.7</version>
