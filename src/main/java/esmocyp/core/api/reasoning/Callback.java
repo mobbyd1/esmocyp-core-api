@@ -1,5 +1,6 @@
 package esmocyp.core.api.reasoning;
 
+import esmocyp.core.api.ApplicationContextUtil;
 import esmocyp.core.api.broadcast.ReasoningBroadcaster;
 import eu.larkc.csparql.common.RDFTable;
 import eu.larkc.csparql.common.RDFTuple;
@@ -19,16 +20,16 @@ import java.util.Observable;
 public class Callback extends ResultFormatter {
 
     @Autowired
-    private ApplicationContext applicationContext;
+    private ApplicationContextUtil applicationContextUtil;
 
     private ReasoningBroadcaster broadcaster;
 
     public Callback() {
-        broadcaster = applicationContext.getBean( ReasoningBroadcaster.class );
+        //broadcaster = applicationContextUtil.getApplicationContext().getBean( ReasoningBroadcaster.class );
     }
 
     public void setUuids( List<String> uuids ) {
-        this.broadcaster.setUuids( uuids );
+       // this.broadcaster.setUuids( uuids );
     }
 
     @Override
@@ -42,7 +43,7 @@ public class Callback extends ResultFormatter {
             RDFTuple t = (RDFTuple)var4.next();
             System.out.println(t.toString());
 
-            broadcaster.broadcast( t.toString() );
+            //broadcaster.broadcast( t.toString() );
         }
 
         System.out.println();

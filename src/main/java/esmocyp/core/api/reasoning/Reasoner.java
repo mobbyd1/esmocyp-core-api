@@ -59,7 +59,7 @@ public class Reasoner extends RdfStream {
 
         csparqlQueryResultProxy.addObserver( callback );
 
-        File tBoxFile = File.createTempFile("esmocyp", "tobx");
+        File tBoxFile = File.createTempFile("esmocyp", "tbox");
         FileUtils.writeByteArrayToFile( tBoxFile, tBox.getBytes() );
 
         String serializedtBox = CsparqlUtils.serializeRDFFile(tBoxFile.getAbsolutePath());

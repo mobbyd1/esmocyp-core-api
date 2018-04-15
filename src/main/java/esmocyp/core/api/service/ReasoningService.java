@@ -1,5 +1,6 @@
 package esmocyp.core.api.service;
 
+import esmocyp.core.api.ApplicationContextUtil;
 import esmocyp.core.api.dto.ReasonerDTO;
 import esmocyp.core.api.dto.StreamDTO;
 import esmocyp.core.api.model.User;
@@ -17,7 +18,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ReasoningService {
 
     @Autowired
-    private ApplicationContext applicationContext;
+    private ApplicationContextUtil applicationContextUtil;
     
     private Map<User, Reasoner> reasoners = new ConcurrentHashMap<>();
 
@@ -29,7 +30,7 @@ public class ReasoningService {
         String aBox = dto.getABox();
         String tBox = dto.getTbox();
 
-        Callback callback = applicationContext.getBean(Callback.class);
+        Callback callback = applicationContextUtil.getApplicationContext().getBean(Callback.class);
         callback.setUuids( dto.getUuids() );
 
         Reasoner reasoner = new Reasoner(

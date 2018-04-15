@@ -7,6 +7,7 @@ public class ReasonerDTO {
     private String query;
     private String streamingURL;
     private String namedModel;
+    private String baseURI;
     private String aBox;
     private String tbox;
 
@@ -58,5 +59,21 @@ public class ReasonerDTO {
 
     public void setUuids(List<String> uuids) {
         this.uuids = uuids;
+    }
+
+    public String getBaseURI() {
+        return baseURI;
+    }
+
+    public void setBaseURI(String baseURI) {
+        this.baseURI = baseURI;
+    }
+
+    public String getaBox() {
+        return aBox;
+    }
+
+    public void setaBox(String aBox) {
+        this.aBox = aBox;
     }
 }
