@@ -10,10 +10,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Observable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Component
 @Scope("prototype")
@@ -36,7 +35,11 @@ public class Callback extends ResultFormatter {
     public void update(Observable o, Object arg) {
         RDFTable q = (RDFTable)arg;
         System.out.println();
-        System.out.println("-------" + q.size() + " results at SystemTime=[" + System.currentTimeMillis() + "]--------");
+
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy:HH:mm:ss.sssss");
+        Date now = new Date();
+
+        System.out.println("-------" + q.size() + " results at SystemTime=[" + dateFormat.format(now) + "]--------");
         Iterator var4 = q.iterator();
 
         while(var4.hasNext()) {

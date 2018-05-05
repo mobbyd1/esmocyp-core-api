@@ -69,6 +69,8 @@ public class Reasoner extends RdfStream {
                 , ""
                 , ReasonerChainingType.BACKWARD
                 , serializedtBox );
+
+
     }
 
     public void destroy() {

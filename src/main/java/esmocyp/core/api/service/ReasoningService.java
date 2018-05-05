@@ -7,10 +7,15 @@ import esmocyp.core.api.model.User;
 import esmocyp.core.api.reasoning.Callback;
 import esmocyp.core.api.reasoning.Reasoner;
 import esmocyp.core.api.service.exception.ReasoningServiceException;
+import eu.larkc.csparql.common.utils.CsparqlUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,28 +28,38 @@ public class ReasoningService {
     private Map<User, Reasoner> reasoners = new ConcurrentHashMap<>();
 
     public void create(User user, ReasonerDTO dto) throws ReasoningServiceException {
-        String query = dto.getQuery();
-        String streamingURL = dto.getStreamingURL();
-        String namedModel = dto.getNamedModel();
-
-        String aBox = dto.getABox();
-        String tBox = dto.getTbox();
-
-        Callback callback = applicationContextUtil.getApplicationContext().getBean(Callback.class);
-        callback.setUuids( dto.getUuids() );
-
-        Reasoner reasoner = new Reasoner(
-                query
-                , streamingURL
-                , namedModel
-                , aBox
-                , tBox
-                , callback);
-
-        reasoners.put(user, reasoner);
 
         try {
+            String query = dto.getQuery();
+            String streamingURL = dto.getStreamingURL();
+            String namedModel = dto.getNamedModel();
+            ClassLoader classLoader = ReasoningService.class.getClassLoader();
+
+            File esmocypData = new File(classLoader.getResource("teste-temperatura-humidade/100-salas/esmocyp-temperature-data.rdf").getFile());
+            File ontology = new File(classLoader.getResource("teste-temperatura-humidade/esmocyp-temperature-humidity.owl").getFile());
+
+            String aBox = CsparqlUtils.serializeRDFFile(esmocypData.getAbsolutePath());
+            String tBox = CsparqlUtils.serializeRDFFile(ontology.getAbsolutePath());
+
+            Callback callback = applicationContextUtil.getApplicationContext().getBean(Callback.class);
+            callback.setUuids( dto.getUuids() );
+
+            Reasoner reasoner = new Reasoner(
+                    query
+                    , streamingURL
+                    , namedModel
+                    , aBox
+                    , tBox
+                    , callback);
+
+            reasoners.put(user, reasoner);
             reasoner.init();
+
+            DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy:HH:mm:ss.sssss");
+            Date now = new Date();
+
+            System.out.println("------- Reasoner init at SystemTime=[" + dateFormat.format(now) + "]--------");
+
         } catch (Exception e) {
             throw new ReasoningServiceException();
         }
