@@ -36,12 +36,6 @@
         <rdfs:range rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
     </owl:ObjectProperty>
 
-     <!-- http://www.semanticweb.org/esmocyp#temSensorSeco -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/esmocyp#temSensorSeco">
-        <rdfs:domain rdf:resource="http://www.semanticweb.org/esmocyp#Sala"/>
-        <rdfs:range rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
-    </owl:ObjectProperty>
 
     <!-- http://www.semanticweb.org/esmocyp#temSala -->
 
@@ -58,6 +52,13 @@
         <rdfs:range rdf:resource="http://www.semanticweb.org/esmocyp#Corredor"/>
     </owl:ObjectProperty>
 
+
+    <!-- http://www.semanticweb.org/esmocyp#estaPertoDe -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/esmocyp#estaPertoDe">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/esmocyp#Andar"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/esmocyp#Andar"/>
+    </owl:ObjectProperty>
 
     <!--
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -102,10 +103,6 @@
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#temSensorMuitoQuente"/>
                         <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
                     </owl:Restriction>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#temSensorSeco"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
-                    </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -143,6 +140,23 @@
             </owl:Class>
         </owl:equivalentClass>
     </owl:Class>
+
+    <!-- http://www.semanticweb.org/esmocyp#AndarEmAlerta -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/esmocyp#AndarEmAlerta">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#Andar"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#estaPertoDe"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#AndarEmPerigo"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+
 
 
     <!-- http://www.semanticweb.org/esmocyp#Sensor -->

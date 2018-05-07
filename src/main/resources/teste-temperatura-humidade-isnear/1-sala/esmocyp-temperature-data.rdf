@@ -29,6 +29,16 @@
         <rdfs:label>sala1</rdfs:label>
     </owl:NamedIndividual>
 
+    <!-- http://www.semanticweb.org/esmocyp#sala2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/esmocyp#sala2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/esmocyp#Sala"/>
+        <temSensor rdf:resource="http://www.semanticweb.org/esmocyp#sensor4"/>
+        <temSensor rdf:resource="http://www.semanticweb.org/esmocyp#sensor5"/>
+        <temSensor rdf:resource="http://www.semanticweb.org/esmocyp#sensor6"/>
+        <estaPertoDe rdf:resource="http://www.semanticweb.org/esmocyp#sala1"/>
+        <rdfs:label>sala2</rdfs:label>
+    </owl:NamedIndividual>
 
     <!-- http://www.semanticweb.org/esmocyp#sensor1 -->
 
@@ -53,7 +63,6 @@
         <rdfs:label>sensor3</rdfs:label>
     </owl:NamedIndividual>
 
-
     <!--
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -65,9 +74,14 @@
     <rdf:Description>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDifferent"/>
         <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sala1"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sala2"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sensor1"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sensor2"/>
             <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sensor3"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sensor4"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sensor5"/>
+            <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#sensor6"/>
         </owl:distinctMembers>
     </rdf:Description>
 

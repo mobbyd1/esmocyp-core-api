@@ -77,7 +77,7 @@
                     <rdf:Description rdf:about="http://www.semanticweb.org/esmocyp#Sala"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#estaPertoDe"/>
-                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#SalaPegandoFogo"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#SalaEmPerigo"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
