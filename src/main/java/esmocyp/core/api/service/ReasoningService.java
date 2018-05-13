@@ -35,8 +35,8 @@ public class ReasoningService {
             String namedModel = dto.getNamedModel();
             ClassLoader classLoader = ReasoningService.class.getClassLoader();
 
-            File esmocypData = new File(classLoader.getResource("suite-teste-1/teste-temperatura-humidade-corredor-andar-isnear/1-andar-1-corredor/esmocyp-data.rdf").getFile());
-            File ontology = new File(classLoader.getResource("suite-teste-1/teste-temperatura-humidade-corredor-andar-isnear/esmocyp-temperature-corredor-andar.owl").getFile());
+            File esmocypData = new File(classLoader.getResource("suite-teste-2/teste-temperatura-humidade-corredor-andar-isnear/10-andares-10-corredores/esmocyp-data.rdf").getFile());
+            File ontology = new File(classLoader.getResource("suite-teste-2/teste-temperatura-humidade-corredor-andar-isnear/esmocyp-temperature-corredor-andar.owl").getFile());
 
             String aBox = CsparqlUtils.serializeRDFFile(esmocypData.getAbsolutePath());
             String tBox = CsparqlUtils.serializeRDFFile(ontology.getAbsolutePath());

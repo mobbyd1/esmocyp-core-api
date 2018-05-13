@@ -135,7 +135,7 @@
 
     <!-- http://www.semanticweb.org/esmocyp#sala10 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/esmocyp#sala9">
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/esmocyp#10">
         <rdf:type rdf:resource="http://www.semanticweb.org/esmocyp#Sala"/>
         <temSensor rdf:resource="http://www.semanticweb.org/esmocyp#sensor28"/>
         <temSensor rdf:resource="http://www.semanticweb.org/esmocyp#sensor29"/>

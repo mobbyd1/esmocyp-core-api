@@ -30,20 +30,6 @@
     </owl:ObjectProperty>
 
 
-    <!-- http://www.semanticweb.org/esmocyp#temSensorMuitoQuente -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/esmocyp#temSensorMuitoQuente">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    </owl:ObjectProperty>
-
-
-    <!-- http://www.semanticweb.org/esmocyp#temSensorSeco -->
-
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/esmocyp#temSensorSeco">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-    </owl:ObjectProperty>
-
-
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
@@ -73,12 +59,12 @@
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#temSensorMuitoQuente"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#temSensor"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#SensorMuitoQuente"/>
                             </owl:Restriction>
                             <owl:Restriction>
-                                <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#temSensorSeco"/>
-                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
+                                <owl:onProperty rdf:resource="http://www.semanticweb.org/esmocyp#temSensor"/>
+                                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/esmocyp#SensorComPoucaUmidade"/>
                             </owl:Restriction>
                         </owl:intersectionOf>
                     </owl:Class>
@@ -92,6 +78,20 @@
     <!-- http://www.semanticweb.org/esmocyp#Sensor -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/esmocyp#Sensor"/>
+
+
+    <!-- http://www.semanticweb.org/esmocyp#SensorMuitoQuente -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/esmocyp#SensorMuitoQuente">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
+    </owl:Class>
+
+
+    <!-- http://www.semanticweb.org/esmocyp#SensorComPoucaUmidade -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/esmocyp#SensorComPoucaUmidade">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/esmocyp#Sensor"/>
+    </owl:Class>
 
 </rdf:RDF>
 
