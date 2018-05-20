@@ -9,6 +9,7 @@ import esmocyp.core.api.reasoning.Reasoner;
 import esmocyp.core.api.service.exception.ReasoningServiceException;
 import eu.larkc.csparql.common.utils.CsparqlUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +25,12 @@ public class ReasoningService {
 
     @Autowired
     private ApplicationContextUtil applicationContextUtil;
+
+    @Value("${esmocyp.data.file}")
+    private String dataFilePath;
+
+    @Value("${esmocy.ontology.file}")
+    private String ontologyFilePath;
     
     private Map<User, Reasoner> reasoners = new ConcurrentHashMap<>();
 
@@ -35,8 +42,8 @@ public class ReasoningService {
             String namedModel = dto.getNamedModel();
             ClassLoader classLoader = ReasoningService.class.getClassLoader();
 
-            File esmocypData = new File(classLoader.getResource("suite-teste-1/teste-temperatura-humidade-corredor-andar-isnear/1-andar-1-corredor/esmocyp-data.rdf").getFile());
-            File ontology = new File(classLoader.getResource("suite-teste-1/teste-temperatura-humidade-corredor-andar-isnear/esmocyp-temperature-corredor-andar.owl").getFile());
+            File esmocypData = new File(classLoader.getResource(dataFilePath).getFile());
+            File ontology = new File(classLoader.getResource(ontologyFilePath).getFile());
 
             String aBox = CsparqlUtils.serializeRDFFile(esmocypData.getAbsolutePath());
             String tBox = CsparqlUtils.serializeRDFFile(ontology.getAbsolutePath());
